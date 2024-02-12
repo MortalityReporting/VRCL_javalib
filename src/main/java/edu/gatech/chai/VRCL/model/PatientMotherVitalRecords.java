@@ -22,4 +22,6 @@ public class PatientMotherVitalRecords extends USCorePatient {
 		super();
 		CommonUtil.initResource(this);
 	}
+
+	
 }
