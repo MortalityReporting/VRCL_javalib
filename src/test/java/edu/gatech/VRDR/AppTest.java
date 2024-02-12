@@ -7,9 +7,9 @@ import java.util.List;
 
 import ca.uhn.fhir.context.ConfigurationException;
 import ca.uhn.fhir.parser.DataFormatException;
-import edu.gatech.chai.VRDR.context.VRDRFhirContextDataStructuresOnly;
-import edu.gatech.chai.VRDR.model.*;
-import edu.gatech.chai.VRDR.model.util.BuildDCD;
+import edu.gatech.chai.VRCL.context.VRDRFhirContextDataStructuresOnly;
+import edu.gatech.chai.VRCL.model.*;
+import edu.gatech.chai.VRCL.model.util.BuildDCD;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

@@ -3,18 +3,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.gatech</groupId>
-    <artifactId>vrdr</artifactId>
+    <artifactId>vrcl</artifactId>
     <version>4.0.4</version>
     <packaging>jar</packaging>
 
-    <name>VRDR</name>
-    <url>https://github.com/nightingaleproject/VRDR_javalib</url>
+    <name>VRCL</name>
+    <url>https://github.com/MortalityReporting/VRCL_Javalb</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <fhir.version>4.1.0</fhir.version>
+        <fhir.version>5.7.0</fhir.version>
     </properties>
 
     <dependencies>
@@ -82,4 +82,3 @@
         </repository>
     </distributionManagement>
 </project>
-

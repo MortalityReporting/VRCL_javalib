@@ -1,14 +1,6 @@
+
 package edu.gatech.VRDR;
 
-import edu.gatech.chai.VRDR.context.VRDRFhirContext;
-import edu.gatech.chai.VRDR.messaging.*;
-import edu.gatech.chai.VRDR.messaging.BaseMessage;
-import edu.gatech.chai.VRDR.messaging.util.MessageParseException;
-import edu.gatech.chai.VRDR.model.*;
-import edu.gatech.chai.VRDR.model.util.CodedRaceAndEthnicityUtil;
-import edu.gatech.chai.VRDR.model.util.CommonUtil;
-import edu.gatech.chai.VRDR.model.util.MannerOfDeathUtil;
-import edu.gatech.chai.VRDR.model.util.DeathDateUtil;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -18,11 +10,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
-import edu.gatech.chai.VRDR.model.util.UploadUtil;
 
 import java.util.Random;
 import org.hl7.fhir.r4.model.IntegerType;
 import org.hl7.fhir.r4.model.UnsignedIntType;
+
+import edu.gatech.chai.USCore.model.util.CommonUtil;
+import edu.gatech.chai.VRCL.context.VRDRFhirContext;
+import edu.gatech.chai.VRCL.messaging.*;
+import edu.gatech.chai.VRCL.messaging.util.MessageParseException;
+import edu.gatech.chai.VRCL.model.*;
+import edu.gatech.chai.VRCL.model.util.CodedRaceAndEthnicityUtil;
+import edu.gatech.chai.VRCL.model.util.DeathDateUtil;
+import edu.gatech.chai.VRCL.model.util.MannerOfDeathUtil;
+import edu.gatech.chai.VRCL.model.util.UploadUtil;
+
 import org.hl7.fhir.r4.model.ExtraDateTimeType;
 
 

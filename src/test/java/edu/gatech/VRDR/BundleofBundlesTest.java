@@ -1,10 +1,10 @@
 package edu.gatech.VRDR;
 
-import edu.gatech.chai.VRDR.model.util.BuildDCD;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
 
-import edu.gatech.chai.VRDR.model.DeathCertificateDocument;
+import edu.gatech.chai.VRCL.model.DeathCertificateDocument;
+import edu.gatech.chai.VRCL.model.util.BuildDCD;
 
 public class BundleofBundlesTest {
 	public void testBundleOfBundles() {
