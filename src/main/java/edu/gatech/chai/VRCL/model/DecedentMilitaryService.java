@@ -1,4 +1,4 @@
-package edu.gatech.chai.VRDR.model;
+package edu.gatech.chai.VRCL.model;
 
 import java.math.BigDecimal;
 
@@ -7,11 +7,11 @@ import org.hl7.fhir.r4.model.Observation;
 import org.hl7.fhir.r4.model.Quantity;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import edu.gatech.chai.VRDR.model.util.CommonUtil;
-import edu.gatech.chai.VRDR.model.util.DecedentMilitaryServiceUtil;
-import edu.gatech.chai.VRDR.model.util.DecedentUsualWorkUtil;
+import edu.gatech.chai.USCore.model.util.CommonUtil;
+import edu.gatech.chai.VRCL.model.util.DecedentMilitaryServiceUtil;
+import edu.gatech.chai.VRCL.model.util.DecedentUsualWorkUtil;
 
-@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-decedent-military-service")
+@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/VRCL/StructureDefinition/VRCL-decedent-military-service")
 public class DecedentMilitaryService extends Observation {
 	public DecedentMilitaryService() {
 		super();

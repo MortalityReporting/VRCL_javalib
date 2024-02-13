@@ -1,26 +1,39 @@
 package edu.gatech.chai.VRCL.model;
 
 import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
+import org.hl7.fhir.r4.model.DateTimeType;
 import org.hl7.fhir.r4.model.DateType;
 import org.hl7.fhir.r4.model.Extension;
+import org.hl7.fhir.r4.model.HumanName;
 import org.hl7.fhir.r4.model.Identifier;
 import org.hl7.fhir.r4.model.IntegerType;
-import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Reference;
 import org.hl7.fhir.r4.model.StringType;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
+import edu.gatech.chai.USCore.model.USCoreRelatedPerson;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 import edu.gatech.chai.USCore.model.util.USCorePatientUtil;
 import edu.gatech.chai.VRCL.model.util.PatientVitalRecordsUtil;
+import edu.gatech.chai.VRCL.model.util.RelatedPersonParentUtil;
 
-@ResourceDef(name = "Patient", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-decedent")
-public class Decedent extends Patient {
+@ResourceDef(name = "RelatedPersonParent", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/RelatedPerson-parent-vr")
+public class RelatedPersonParentVitalRecords extends USCoreRelatedPerson {
 
-	public Decedent() {
+	public RelatedPersonParentVitalRecords() {
 		super();
 		CommonUtil.initResource(this);
+	}
+
+	public RelatedPersonParentVitalRecords(Reference patient, boolean active,HumanName name) {
+		super();
+		CommonUtil.initResource(this);
+		setPatient(patient);
+		setActive(active);
+		addName(name);
 	}
 
 	public Extension getRace() {
@@ -61,7 +74,7 @@ public class Decedent extends Patient {
 			Extension textExt = new Extension("text", new StringType(text));
 			extension.addExtension(textExt);
 		}
-		this.addExtension(extension);
+		addExtension(extension);
 		return extension;
 	}
 
@@ -103,45 +116,27 @@ public class Decedent extends Patient {
 			Extension textExt = new Extension("text", new StringType(text));
 			extension.addExtension(textExt);
 		}
-		this.addExtension(extension);
+		addExtension(extension);
+		return extension;
+
+
+	}
+
+	public Extension getDeceased() {
+		return CommonUtil.getExtension(this, RelatedPersonParentUtil.deceasedExtensionUrl);
+	}
+
+	public Extension setDeceased(BooleanType deceased) {
+		Extension extension = getDeceased();
+		extension.setValue(deceased);
+		addExtension(extension);
 		return extension;
 	}
 
-	public Extension getSexAtDeath() {
-		return CommonUtil.getExtension(this, USCorePatientUtil.sexAtDeathExtensionURL);
-	}
-
-	public Extension setSexAtDeath(String value) {
-		CodeableConcept ccSAD = CommonUtil.findConceptFromCollectionUsingSimpleString(value, USCorePatientUtil.sexAtDeathSet);
-		return setSexAtDeath(ccSAD);
-	}
-	
-	public Extension setSexAtDeath(CodeableConcept value) {
-		Extension extension = getSexAtDeath();
-		if (extension == null) {
-			extension = new Extension(USCorePatientUtil.sexAtDeathExtensionURL);
-		}
-		extension.setValue(value);
-		this.addExtension(extension);
-		return extension;
-	}
-	
-	public Extension getSpouseAlive() {
-		return CommonUtil.getExtension(this, USCorePatientUtil.spouseAliveExtensionURL);
-	}
-
-	public Extension setSpouseAlive(String value) {
-		CodeableConcept ccSAD = CommonUtil.findConceptFromCollectionUsingSimpleString(value, USCorePatientUtil.spouseAliveSet);
-		return setSpouseAlive(ccSAD);
-	}
-	
-	public Extension setSpouseAlive(CodeableConcept value) {
-		Extension extension = getSpouseAlive();
-		if (extension == null) {
-			extension = new Extension(USCorePatientUtil.spouseAliveExtensionURL);
-		}
-		extension.setValue(value);
-		this.addExtension(extension);
+	public Extension setDeceased(DateTimeType deceased) {
+		Extension extension = getDeceased();
+		extension.setValue(deceased);
+		addExtension(extension);
 		return extension;
 	}
 
@@ -161,37 +156,24 @@ public class Decedent extends Patient {
 	public Extension addBirthPlace(Address address) {
 		Extension extension = new Extension(PatientVitalRecordsUtil.birthPlaceExtensionURL);
 		extension.setValue(address);
-		this.addExtension(extension);
+		addExtension(extension);
 		return extension;
 	}
 
 	public Identifier addSSNIdentifier(String value) {
+		return addIdentifier(USCorePatientUtil.identifierTypeSSValue, USCorePatientUtil.identifierSSSystem, value);
+	}
+
+    public Identifier addIdentifier(CodeableConcept type, String system, String value) {
 		Identifier identifier = new Identifier();
-		identifier.setType(USCorePatientUtil.identifierTypeSSValue);
+		identifier.setType(type);
 		identifier.setValue(value);
-		identifier.setSystem(USCorePatientUtil.identifierSSSystem);
+		identifier.setSystem(system);
 		addIdentifier(identifier);
 		return identifier;
 	}
-	
-	public Decedent setMaritalStatus(String maritalStatus) {
-		CodeableConcept maritalStatusCC = CommonUtil.findConceptFromCollectionUsingSimpleString(maritalStatus, USCorePatientUtil.maritalStatusSet);
-		this.setMaritalStatus(maritalStatusCC);
-		return this;
-	}
-	
-	public Decedent setMaritalStatus(String maritalStatus, CodeableConcept bypassEditFlag) {
-		CodeableConcept maritalStatusCC = CommonUtil.findConceptFromCollectionUsingSimpleString(maritalStatus, USCorePatientUtil.maritalStatusSet);
-		maritalStatusCC = maritalStatusCC.copy();
-		if(bypassEditFlag != null) {
-			Extension extension = new Extension();
-			extension.setUrl(maritalStatus);
-		}
-		this.setMaritalStatus(maritalStatusCC);
-		return this;
-	}
-	
-	public Decedent addPartialBirthDateExtension(IntegerType year,String yearDataAbsentReason, IntegerType month,String monthDataAbsentReason,
+
+	public RelatedPersonParentVitalRecords addPartialBirthDateExtension(IntegerType year,String yearDataAbsentReason, IntegerType month,String monthDataAbsentReason,
 			IntegerType day,String dayDataAbsentReason) {
 		if(this.birthDate == null) {
 			this.birthDate = new DateType();
@@ -209,7 +191,7 @@ public class Decedent extends Patient {
 		return baseExtension;
 	}
 	
-	private Decedent addPartialDateYear(Extension baseExtension, IntegerType year,String dataAbsentReason) {
+	private RelatedPersonParentVitalRecords addPartialDateYear(Extension baseExtension, IntegerType year,String dataAbsentReason) {
 		if(dataAbsentReason != null && !dataAbsentReason.isEmpty()) {
 			baseExtension.addExtension(new Extension(CommonUtil.partialDateDateYearAbsentReasonURL,CommonUtil.findCodeFromCollectionUsingSimpleString(dataAbsentReason, CommonUtil.dataAbsentReasonCodeSet)));
 		}
@@ -219,7 +201,7 @@ public class Decedent extends Patient {
 		return this;
 	}
 	
-	private Decedent addPartialDateMonth(Extension baseExtension, IntegerType month,String dataAbsentReason) {
+	private RelatedPersonParentVitalRecords addPartialDateMonth(Extension baseExtension, IntegerType month,String dataAbsentReason) {
 		if(dataAbsentReason != null && !dataAbsentReason.isEmpty()) {
 			baseExtension.addExtension(new Extension(CommonUtil.partialDateDateMonthAbsentReasonURL,CommonUtil.findCodeFromCollectionUsingSimpleString(dataAbsentReason, CommonUtil.dataAbsentReasonCodeSet)));
 		}
@@ -229,7 +211,7 @@ public class Decedent extends Patient {
 		return this;
 	}
 	
-	private Decedent addPartialDateDay(Extension baseExtension, IntegerType day,String dataAbsentReason) {
+	private RelatedPersonParentVitalRecords addPartialDateDay(Extension baseExtension, IntegerType day,String dataAbsentReason) {
 		if(dataAbsentReason != null || !dataAbsentReason.isEmpty()) {
 			baseExtension.addExtension(new Extension(CommonUtil.partialDateDateDayAbsentReasonURL,CommonUtil.findCodeFromCollectionUsingSimpleString(dataAbsentReason, CommonUtil.dataAbsentReasonCodeSet)));
 		}
@@ -238,5 +220,4 @@ public class Decedent extends Patient {
 		}
 		return this;
 	}
-	//TODO: Add handler for informant mapping
 }

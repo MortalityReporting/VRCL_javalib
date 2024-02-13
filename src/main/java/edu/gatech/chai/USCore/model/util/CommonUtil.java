@@ -310,4 +310,9 @@ public class CommonUtil {
 	public static <T extends Resource> T findEntry(Bundle messageBundle, Class<T> tClass) {
 		return findEntry(messageBundle, tClass, false);
 	}
+
+	public static void setDataAbsentReason(Type element, CodeType dataAbsentReason){
+		
+		element.addExtension(null)
+	}
 }

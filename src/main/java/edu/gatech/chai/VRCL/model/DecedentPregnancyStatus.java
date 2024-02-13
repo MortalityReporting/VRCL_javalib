@@ -1,14 +1,14 @@
-package edu.gatech.chai.VRDR.model;
+package edu.gatech.chai.VRCL.model;
 
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Observation;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import edu.gatech.chai.VRDR.model.util.CommonUtil;
-import edu.gatech.chai.VRDR.model.util.DecedentPregnancyStatusUtil;
+import edu.gatech.chai.USCore.model.util.CommonUtil;
+import edu.gatech.chai.VRCL.model.util.DecedentPregnancyStatusUtil;
 
-@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-decedent-pregnancy-status")
+@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/VRCL/StructureDefinition/VRCL-decedent-pregnancy-status")
 public class DecedentPregnancyStatus extends Observation {
 	/**
 	 * 
