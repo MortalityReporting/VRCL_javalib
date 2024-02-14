@@ -2,12 +2,14 @@ package edu.gatech.chai.VRCL.context;
 
 import org.hl7.fhir.r4.model.Bundle;
 
-import edu.gatech.chai.VRCL.messaging.*;
+import ca.uhn.fhir.context.FhirContext;
 
-public class VRDRFhirContext extends VRDRFhirContextDataStructuresOnly {
-    public VRDRFhirContext() {
+public class VRCLFhirContext {
+    FhirContext ctx;
+    public VRCLFhirContext() {
         super();
-        ctx.setDefaultTypeForProfile("http://cdc.gov/nchs/nvss/fhir/vital-records-messaging/StructureDefinition/VRM-DeathRecordSubmissionMessage",
+        ctx = FhirContext.forR4();
+        ctx.setDefaultTypeForProfile("http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Observation-autopsy-performed-indicator-vr",
                 Bundle.class);
         ctx.setDefaultTypeForProfile("http://cdc.gov/nchs/nvss/fhir/vital-records-messaging/StructureDefinition/VRM-DeathRecordUpdateMessage",
                 Bundle.class);

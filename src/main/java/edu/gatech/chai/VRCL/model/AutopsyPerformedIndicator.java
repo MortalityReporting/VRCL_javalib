@@ -8,7 +8,7 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 import edu.gatech.chai.VRCL.model.util.AutopsyPerformedIndicatorUtil;
 
-@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-autopsy-performed-indicator")
+@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Observation-autopsy-performed-indicator-vr")
 public class AutopsyPerformedIndicator extends Observation {
 
 	public AutopsyPerformedIndicator() {
@@ -52,8 +52,8 @@ public class AutopsyPerformedIndicator extends Observation {
 		addAutopsyResultsAvailableComponent(autopsyResultsAvailableConcept);
 	}
 
-	public void setDecedent(Decedent decedent) {
-		Reference reference = new Reference(decedent.getId());
+	public void setDecedent(PatientVitalRecords patient) {
+		Reference reference = new Reference(patient.getId());
 		setSubject(reference);
 	}
 

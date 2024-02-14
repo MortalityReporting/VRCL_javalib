@@ -138,7 +138,7 @@ public class PatientVitalRecords extends USCorePatient{
 	}
 	
 	private PatientVitalRecords addPartialDateDay(Extension baseExtension, IntegerType day,String dataAbsentReason) {
-		if(dataAbsentReason != null || !dataAbsentReason.isEmpty()) {
+		if(dataAbsentReason != null && !dataAbsentReason.isEmpty()) {
 			baseExtension.addExtension(new Extension(CommonUtil.partialDateDateDayAbsentReasonURL,CommonUtil.findCodeFromCollectionUsingSimpleString(dataAbsentReason, CommonUtil.dataAbsentReasonCodeSet)));
 		}
 		else if(day != null && !day.isEmpty()){

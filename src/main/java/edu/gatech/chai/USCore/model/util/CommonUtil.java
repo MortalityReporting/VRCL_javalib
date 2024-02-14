@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.UUID;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
-import edu.gatech.chai.VRCL.model.DeathCertificate;
-import edu.gatech.chai.VRCL.model.DeathCertificateDocument;
 
 import org.hl7.fhir.r4.model.*;
 import org.hl7.fhir.r4.model.Composition.SectionComponent;
@@ -187,19 +185,6 @@ public class CommonUtil {
 		resource.setId(new IdType(UUID.randomUUID().toString()));
 	}
 	
-	public static Bundle addBundleEntry(DeathCertificateDocument deathCertificateDocument, Resource resource) {
-		deathCertificateDocument.addEntry().setResource(resource).setFullUrl(resource.getId());
-		return deathCertificateDocument;
-	}
-	
-	public static DeathCertificate addSectionEntry(DeathCertificate deathCertificate,Resource resource) {
-		if(deathCertificate.getSection() != null && !deathCertificate.getSection().isEmpty()) {
-			deathCertificate.addSection(new SectionComponent());
-		}
-		SectionComponent sectionComponent = deathCertificate.getSectionFirstRep();
-		sectionComponent.addEntry(new Reference(resource.getId()));
-		return deathCertificate;
-	}
 	
 	public static CodeableConcept findConceptFromCollectionUsingSimpleString(String key,Collection<CodeableConcept> collection) {
 		for(CodeableConcept conceptIter:collection) {
@@ -275,9 +260,6 @@ public class CommonUtil {
                 return (T) entry.getResource();
             }
         }
-        if (!ignoreMissingEntries) {
-            throw new MessageParseException("Failed to find a Bundle Entry containing a Resource of type " + tClass.getCanonicalName(), bundle);
-        }
         return null;
     }
 
@@ -311,8 +293,10 @@ public class CommonUtil {
 		return findEntry(messageBundle, tClass, false);
 	}
 
-	public static void setDataAbsentReason(Type element, CodeType dataAbsentReason){
-		
-		element.addExtension(null)
+	public static Type setDataAbsentReason(Type element, CodeType dataAbsentReason){
+		Extension dabExtension = new Extension(CommonUtil.dataAbsentReasonUrl);
+		dabExtension.setValue(dataAbsentReason);
+		element.addExtension(dabExtension);
+		return element;
 	}
 }

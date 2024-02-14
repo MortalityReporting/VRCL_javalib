@@ -11,7 +11,7 @@ import edu.gatech.chai.USCore.model.util.CommonUtil;
 import edu.gatech.chai.VRCL.model.util.CodedRaceAndEthnicityUtil;
 import edu.gatech.chai.VRCL.model.util.InputRaceAndEthnicityUtil;
 
-@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-input-race-and-ethnicity")
+@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/input-race-and-ethnicity-vr")
 public class InputRaceAndEthnicity extends Observation {
 	public InputRaceAndEthnicity() {
 		super();

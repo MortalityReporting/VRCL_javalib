@@ -9,7 +9,7 @@ import org.hl7.fhir.r4.model.Observation.ObservationStatus;
 
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-public class DecedentEducationLevelUtil {
+public class ObservationEducationLevelUtil {
 	public static final ObservationStatus status = ObservationStatus.FINAL;
 	public static final CodeableConcept code = new CodeableConcept()
 			.addCoding(new Coding(CommonUtil.loincSystemUrl, "80913-7", "Highest level of education [US Standard Certificate of Death]s"));

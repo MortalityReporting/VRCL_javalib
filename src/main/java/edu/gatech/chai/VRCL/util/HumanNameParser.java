@@ -21,7 +21,6 @@ public class HumanNameParser {
 			return returnName;
 		}
 		
-		boolean hasPrefix = false;
 		boolean hasSuffix = false;
 		int familyIndex = nameParts.length-1;
 		int givenStartIndex = 0;

@@ -2,31 +2,17 @@
 
      package edu.gatech.chai.VRCL.model;
 
-import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.Coding;
-import org.hl7.fhir.r4.model.DateTimeType;
-import org.hl7.fhir.r4.model.InstantType;
-import org.hl7.fhir.r4.model.IntegerType;
 import org.hl7.fhir.r4.model.Observation;
-import org.hl7.fhir.r4.model.Period;
-import org.hl7.fhir.r4.model.Quantity;
-import org.hl7.fhir.r4.model.Range;
-import org.hl7.fhir.r4.model.Ratio;
 import org.hl7.fhir.r4.model.Reference;
-import org.hl7.fhir.r4.model.SampledData;
 import org.hl7.fhir.r4.model.StringType;
-import org.hl7.fhir.r4.model.TimeType;
-import org.hl7.fhir.r4.model.Timing;
-import org.hl7.fhir.r4.model.Type;
 
-import ca.uhn.fhir.model.api.annotation.Child;
-import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 import edu.gatech.chai.VRCL.model.util.EmergingIssuesUtil;
 
-@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vrdr/StructureDefinition/vrdr-emerging-issues")
+@ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Observation-emerging-issues-vr")
 public class EmergingIssues extends Observation {
 
 	/**
@@ -52,9 +38,9 @@ public class EmergingIssues extends Observation {
 		setStatus(EmergingIssuesUtil.status);
 	}
 
-	public EmergingIssues(Decedent decedent) {
+	public EmergingIssues(PatientVitalRecords patient) {
 		this();
-		setSubject(new Reference(decedent));
+		setSubject(new Reference(patient));
 	}
 	
 
