@@ -7,7 +7,7 @@ import org.hl7.fhir.r4.model.Observation.ObservationStatus;
 
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-public class DecedentUsualWorkUtil {
+public class ObservationUsualWorkUtil {
 	public static final Observation.ObservationStatus status = ObservationStatus.FINAL;
 	public static final CodeableConcept code = new CodeableConcept()
 			.addCoding(new Coding().setSystem(CommonUtil.loincSystemUrl).setCode("21843-8").setDisplay("History of Usual occupation"));
