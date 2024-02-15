@@ -6,7 +6,7 @@ import org.hl7.fhir.r4.model.RelatedPerson;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-@ResourceDef(name = "USCoreRelatedPerson", profile = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient")
+@ResourceDef(name = "USCoreRelatedPerson", profile = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-relatedperson")
 public class USCoreRelatedPerson extends RelatedPerson {
 
 	public USCoreRelatedPerson() {

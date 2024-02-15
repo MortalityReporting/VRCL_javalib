@@ -3,6 +3,7 @@ package edu.gatech.chai.VRCL.context;
 import org.hl7.fhir.r4.model.Bundle;
 
 import ca.uhn.fhir.context.FhirContext;
+import edu.gatech.chai.USCore.context.USCoreFhirContext;
 import edu.gatech.chai.VRCL.model.AutopsyPerformedIndicator;
 import edu.gatech.chai.VRCL.model.CodedRaceAndEthnicity;
 import edu.gatech.chai.VRCL.model.EmergingIssues;
@@ -18,11 +19,9 @@ import edu.gatech.chai.VRCL.model.RelatedPersonFatherVitalRecords;
 import edu.gatech.chai.VRCL.model.RelatedPersonMotherVitalRecords;
 import edu.gatech.chai.VRCL.model.RelatedPersonParentVitalRecords;
 
-public class VRCLFhirContext {
-    FhirContext ctx;
+public class VRCLFhirContext extends USCoreFhirContext {
     public VRCLFhirContext() {
         super();
-        ctx = FhirContext.forR4();
         ctx.setDefaultTypeForProfile("http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Observation-autopsy-performed-indicator-vr",
                 AutopsyPerformedIndicator.class);
         ctx.setDefaultTypeForProfile("http://hl7.org/fhir/us/vr-common-library/StructureDefinition/coded-race-and-ethnicity-vr",
