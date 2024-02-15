@@ -20,7 +20,7 @@ import edu.gatech.chai.USCore.model.util.USCorePatientUtil;
 import edu.gatech.chai.VRCL.model.util.PatientVitalRecordsUtil;
 import edu.gatech.chai.VRCL.model.util.RelatedPersonParentUtil;
 
-@ResourceDef(name = "RelatedPersonParent", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/RelatedPerson-parent-vr")
+@ResourceDef(name = "RelatedPerson", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/RelatedPerson-parent-vr")
 public class RelatedPersonParentVitalRecords extends USCoreRelatedPerson {
 
 	public RelatedPersonParentVitalRecords() {

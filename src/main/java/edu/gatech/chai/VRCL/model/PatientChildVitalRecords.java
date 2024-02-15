@@ -4,7 +4,7 @@ import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.USCorePatient;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-@ResourceDef(name = "PatientChildVitalRecords", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Patient-child-vr")
+@ResourceDef(name = "Patient", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Patient-child-vr")
 public class PatientChildVitalRecords extends USCorePatient {
 
 	public PatientChildVitalRecords() {

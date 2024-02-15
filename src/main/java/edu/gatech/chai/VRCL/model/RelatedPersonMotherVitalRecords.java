@@ -6,7 +6,7 @@ import org.hl7.fhir.r4.model.Reference;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-@ResourceDef(name = "RelatedPersonMotherVitalRecords", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/RelatedPerson-mother-vr")
+@ResourceDef(name = "RelatedPerson", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/RelatedPerson-mother-vr")
 public class RelatedPersonMotherVitalRecords extends RelatedPersonParentVitalRecords {
 
 	public RelatedPersonMotherVitalRecords() {

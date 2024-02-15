@@ -7,7 +7,7 @@ import org.hl7.fhir.r4.model.Practitioner;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
 
-@ResourceDef(name = "USCorePractitioner", profile = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")
+@ResourceDef(name = "Practitioner", profile = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-practitioner")
 public class USCorePractitioner extends Practitioner {
 
 	public USCorePractitioner() {

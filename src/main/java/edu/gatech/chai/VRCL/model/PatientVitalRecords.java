@@ -19,7 +19,7 @@ import edu.gatech.chai.USCore.model.util.USCorePatientUtil;
 import edu.gatech.chai.VRCL.model.util.PatientVitalRecordsUtil;
 import edu.gatech.chai.VRCL.util.HumanNameParser;
 
-@ResourceDef(name = "VitalRecordsPatient", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Patient-vr")
+@ResourceDef(name = "Patient", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Patient-vr")
 public class PatientVitalRecords extends USCorePatient{
     
     public PatientVitalRecords() {
