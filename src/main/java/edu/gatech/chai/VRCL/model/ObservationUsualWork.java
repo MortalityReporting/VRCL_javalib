@@ -8,18 +8,18 @@ import org.hl7.fhir.r4.model.Quantity;
 
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import edu.gatech.chai.USCore.model.util.CommonUtil;
-import edu.gatech.chai.VRCL.model.util.DecedentUsualWorkUtil;
+import edu.gatech.chai.VRCL.model.util.ObservationUsualWorkUtil;
 
 @ResourceDef(name = "Observation", profile = "http://hl7.org/fhir/us/vr-common-library/StructureDefinition/Observation-usual-work-vr")
-public class DecedentUsualWork extends Observation {
-	public DecedentUsualWork() {
+public class ObservationUsualWork extends Observation {
+	public ObservationUsualWork() {
 		super();
 		CommonUtil.initResource(this);
-		setStatus(DecedentUsualWorkUtil.status);
-		setCode(DecedentUsualWorkUtil.code);
+		setStatus(ObservationUsualWorkUtil.status);
+		setCode(ObservationUsualWorkUtil.code);
 	}
 	
-	public DecedentUsualWork(CodeableConcept usualWork, CodeableConcept usualIndustryValue, Integer occupationYears) {
+	public ObservationUsualWork(CodeableConcept usualWork, CodeableConcept usualIndustryValue, Integer occupationYears) {
 		this();
 		setValue(usualWork);
 		addUsualIndustry(usualIndustryValue);
@@ -29,14 +29,14 @@ public class DecedentUsualWork extends Observation {
 	
 	public void addUsualIndustry(CodeableConcept usualIndustryValue) {
 		ObservationComponentComponent component = new ObservationComponentComponent();
-		component.setCode(DecedentUsualWorkUtil.componentUsualIndustryCode);
+		component.setCode(ObservationUsualWorkUtil.componentUsualIndustryCode);
 		component.setValue(usualIndustryValue);
 		addComponent(component);
 	}
 	
 	public void addUsualOccupationDuration(Integer years) {
 		ObservationComponentComponent component = new ObservationComponentComponent();
-		component.setCode(DecedentUsualWorkUtil.componentUsualOccupationDuraction);
+		component.setCode(ObservationUsualWorkUtil.componentUsualOccupationDuraction);
 		Quantity yearsQuantity = new Quantity();
 		yearsQuantity.setCode("a");
 		yearsQuantity.setSystem("http://unitsofmeasure.org");
