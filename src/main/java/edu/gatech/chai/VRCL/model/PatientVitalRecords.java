@@ -1,6 +1,7 @@
 package edu.gatech.chai.VRCL.model;
 
 import org.hl7.fhir.r4.model.Address;
+import org.hl7.fhir.r4.model.BooleanType;
 import org.hl7.fhir.r4.model.CodeableConcept;
 import org.hl7.fhir.r4.model.DateType;
 import org.hl7.fhir.r4.model.Extension;
@@ -97,6 +98,12 @@ public class PatientVitalRecords extends USCorePatient{
 
 	public HumanName addNamePriorToMarriage(String name){
 		return addNamePriorToMarriage(HumanNameParser.createHumanName(name));
+	}
+
+	public Extension addFetalDeath(boolean fetalDeathValue){
+		Extension extension = new Extension(PatientVitalRecordsUtil.fetalDeathExtensionUrl);
+		extension.setValue(new BooleanType(fetalDeathValue));
+		return extension;
 	}
 
 	public PatientVitalRecords addPartialBirthDateExtension(IntegerType year,String yearDataAbsentReason, IntegerType month,String monthDataAbsentReason,
