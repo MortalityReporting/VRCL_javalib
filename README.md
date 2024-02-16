@@ -1,4 +1,4 @@
-# VRDR_javalib
+# VRCL_javalib
 
 Java library implementation of the FHIR Vital Records Common Libary(VRCL).  This repository includes Java code for:
 
